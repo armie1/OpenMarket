@@ -23,11 +23,12 @@ function App() {
             <p>Build a list of things</p>
             <input type="text" id="myInput" className="input-title" placeholder="List Title..." />
             <input type="submit" className="addBtn" value="Add" onClick={newElement} />
-            <ul id="myUL">
-            <ul id="myUL2">
-            </ul>
-            </ul>
-          </div>
+           <div id="myUL">
+
+           </div>
+           </div>
+           <ul id="myUL2">
+           </ul>
           <p>
             Some pages developed by me.
           </p>
@@ -71,14 +72,14 @@ for (i = 0; i < close.length; i++) {
   }
 }
 function newElement() {
-  let li = document.createElement("li");
+  let ul = document.createElement("ul");
   let inputValue = document.getElementById("myInput").value;
   let t = document.createTextNode(inputValue);
-  li.appendChild(t);
+  ul.appendChild(t);
   if (inputValue === '') {
     alert("You must write something!");
   } else {
-    document.getElementById("myUL").appendChild(li);
+    document.getElementById("myUL").appendChild(ul);
   }
   document.getElementById("myInput").value = "";
 
@@ -88,17 +89,17 @@ function newElement() {
   num = num + 1;
   inputs.id = "myInput" + num;
   let txt = document.createTextNode("\u00D7");
-  let texts = document.createTextNode("List" + num);
+  let texts = document.createTextNode(" List" + num + " ");
   let buttons = document.createElement("BUTTON");
-  buttons.innerHTML = "Add";
+  buttons.innerHTML = "Add-Sublist";
   buttons.className = "addBtn";
   buttons.id = num;
   buttons.onclick = newElement2;
   span.appendChild(txt);
-  li.appendChild(span);
-  li.appendChild(inputs);
-  li.appendChild(texts);
-  li.appendChild(buttons);
+  ul.appendChild(span);
+  ul.appendChild(inputs);
+  ul.appendChild(texts);
+  ul.appendChild(buttons);
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
       let div = this.parentElement;
@@ -121,19 +122,12 @@ function newElement2() {
   document.getElementById("myInput").value = "";
 
   let span = document.createElement("SPAN");
-  span.className = "close";
-  let inputs = document.createElement("INPUT");
+  span.className = "close closes";
   let txt = document.createTextNode("\u00D7");
-  let texts = document.createTextNode("Sub-list" + num);
-  let buttons = document.createElement("BUTTON");
-  buttons.innerHTML = "Add";
-  buttons.className = "addBtn";
-  buttons.onclick = newElement3;
+  let texts = document.createTextNode(" Sub-list" + num);
   span.appendChild(txt);
   li.appendChild(span);
-  li.appendChild(inputs);
   li.appendChild(texts);
-  li.appendChild(buttons);
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
       let div = this.parentElement;
@@ -141,9 +135,6 @@ function newElement2() {
     }
   }
 
-}
-function newElement3() {
-  alert("You can not write a sub-sub-list!");
 }
 
 export default App;
